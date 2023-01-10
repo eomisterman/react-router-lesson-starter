@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -18,6 +23,12 @@ function App() {
     <Router>
       <Header />
       <main>
+        <Route path="/articles/:title">
+          <Article />
+        </Route>
+        <Route path="/authors/:name">
+          <Author />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
