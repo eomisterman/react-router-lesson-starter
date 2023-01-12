@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   selectArticles,
@@ -13,11 +13,13 @@ export default function Articles() {
   const articles = useSelector(selectArticles);
 
   // grab the search value from useLocation()
+  const { search } = useLocation();
 
   // get the queryParams from new URLSearchParams()
-
-  const title = ""; // <-- fix me!
-
+  const queryParams = new URLSearchParams(search);
+  const title = queryParams.get("title");
+  console.log(queryParams, title);
+  
   const filteredArticles = title
     ? filterArticles(title, articles)
     : Object.values(articles);
